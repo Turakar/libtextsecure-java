@@ -463,6 +463,9 @@ public class SignalServiceMessageSender {
         List<PreKeyBundle> preKeys = socket.getPreKeys(recipient, deviceId);
 
         for (PreKeyBundle preKey : preKeys) {
+          if (credentialsProvider.getUser().equals(recipient.getNumber()) && credentialsProvider.getDeviceId() == preKey.getDeviceId()) {
+            continue;
+          }
           try {
             SignalProtocolAddress preKeyAddress  = new SignalProtocolAddress(recipient.getNumber(), preKey.getDeviceId());
             SessionBuilder        sessionBuilder = new SessionBuilder(store, preKeyAddress);
