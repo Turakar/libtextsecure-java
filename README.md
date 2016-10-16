@@ -1,6 +1,11 @@
-# signal-service-java
+# signal-service-java - provisioning version
 
 A Java library for communicating via Signal.
+
+## Unofficial fork!
+
+This library is an unofficial fork where I publish my changes to the official library (upstream).
+Use it at your own risk. OpenWhisperSystems is not responsible for this fork.
 
 ## Implementing the Signal Protocol interfaces
 
