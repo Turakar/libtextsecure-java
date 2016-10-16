@@ -35,30 +35,32 @@ signing {
     sign configurations.archives
 }
 
-
-def sonatypeRepo            = sonatypeRepo != null ? sonatypeRepo : ""
-def whisperSonatypeUsername = whisperSonatypeUsername != null ? whisperSonatypeUsername : ""
-def whisperSonatypePassword = whisperSonatypePassword != null ? whisperSonatypePassword : ""
+def ossrhUsername = ossrhUsername != null ? ossrhUsername : ""
+def ossrhPassword = ossrhPassword != null ? ossrhPassword : ""
 
 uploadArchives {
     configuration = configurations.archives
     repositories.mavenDeployer {
         beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
 
-        repository(url: sonatypeRepo) {
-            authentication(userName: whisperSonatypeUsername, password: whisperSonatypePassword)
+        repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+            authentication(userName: ossrhUsername, password: ossrhPassword)
+        }
+
+        snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+            authentication(userName: ossrhUsername, password: ossrhPassword)
         }
 
         pom.project {
-            name 'signal-service-java'
+            name 'signal-service-java-provisioning'
             packaging 'jar'
-            description 'Signal Service communication library for Java'
-            url 'https://github.com/WhisperSystems/libsignal-service-java'
+            description 'Signal Service communication library for Java, unofficial provisioning fork'
+            url 'https://github.com/Turakar/libtextsecure-java/tree/nomerge'
 
             scm {
-                url 'scm:git@github.com:WhisperSystems/libsignal-service-java.git'
-                connection 'scm:git@github.com:WhisperSystems/libsignal-service-java.git'
-                developerConnection 'scm:git@github.com:WhisperSystems/libsignal-service-java.git'
+                url 'scm:git@github.com:Turakar/libtextsecure-java.git'
+                connection 'scm:git@github.com:Turakar/libtextsecure-java.git'
+                developerConnection 'scm:git@github.com:Turakar/libtextsecure-java.git'
             }
 
             licenses {
@@ -72,6 +74,7 @@ uploadArchives {
             developers {
                 developer {
                     name 'Moxie Marlinspike'
+                    name 'Tilman Hoffbauer'
                 }
             }
         }
