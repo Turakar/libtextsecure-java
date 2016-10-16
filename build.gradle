@@ -1,6 +1,6 @@
 subprojects {
-    ext.version_number     = "2.1.1provisioning"
-    ext.group_info         = "org.whispersystems"
+    ext.version_number     = "2.3.1provisioning"
+    ext.group_info         = "de.thoffbauer"
     ext.signal_version     = "2.2.0"
 
     if (JavaVersion.current().isJava8Compatible()) {
