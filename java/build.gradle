@@ -52,7 +52,7 @@ uploadArchives {
         }
 
         pom.project {
-            name 'signal-service-java-provisioning'
+            name 'signal-service-java'
             packaging 'jar'
             description 'Signal Service communication library for Java, unofficial provisioning fork'
             url 'https://github.com/Turakar/libtextsecure-java/tree/nomerge'
@@ -74,6 +74,8 @@ uploadArchives {
             developers {
                 developer {
                     name 'Moxie Marlinspike'
+                }
+                developer {
                     name 'Tilman Hoffbauer'
                 }
             }
