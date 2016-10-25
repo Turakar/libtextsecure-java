@@ -35,8 +35,8 @@ signing {
     sign configurations.archives
 }
 
-def ossrhUsername = ossrhUsername != null ? ossrhUsername : ""
-def ossrhPassword = ossrhPassword != null ? ossrhPassword : ""
+def ossrhUsername = project.properties['ossrhUsername'] ?: ""
+def ossrhPassword = project.properties['ossrhPassword'] ?: ""
 
 uploadArchives {
     configuration = configurations.archives
